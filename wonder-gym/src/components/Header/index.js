@@ -19,7 +19,6 @@ export default function Headers(props){
         </div>
         <div className="flex pr-4 items-center justify-end w-6/12">
             <FiMenu color={icon_color} size="2rem" onClick={() => { setShowUserMenu(true); }} className="cursor-pointer"/>
-            {console.log(showUserMenu)}
             {
             showUserMenu && (
                 <>

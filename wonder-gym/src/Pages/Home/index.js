@@ -1,4 +1,4 @@
-import Header from '../../components/Header' 
+import Header from '../../components/Header'
 
 export default function Home() {
 
@@ -6,7 +6,7 @@ export default function Home() {
     {
         id: 1,
         tag: 'Iniciar Sesión',
-        route: '/login'
+        route: '/login',
     },
     {
       id: 2,

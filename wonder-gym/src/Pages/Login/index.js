@@ -1,26 +1,12 @@
-import Header from '../../components/Header'
+//import Header from '../../components/Header'
 //import Button from '../../components/Button'
+import LoginModal from '../../components/LoginModal';
 
 export default function Login() {
 
-  const MenuValues = [
-    {
-      id: 5,
-      tag: 'Menu Principal',
-      route: '/'
-    },
-    {
-      id: 6,
-      tag: 'Registrarme',
-      route: '/register'
-    },
-  ]
-
     return (
-      <>
-        <div className='m-0'>
-          <Header bg_gray={false} logo_src='/logo84-64_v2.png' values={MenuValues}/>
-        </div>
-      </>
+      <div className={`h-screen bg-main-gray w-full sm:px-8 md:px-12 lg:px-24`}>
+        <LoginModal/>
+      </div>
     )
   }
