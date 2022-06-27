@@ -4,30 +4,30 @@ export default function Lists(props){
     return (
         <>
    
-        <div class ="bg-white">
+        {/*<div className="bg-white w-full sm:px-8 md:px-12 lg:px-24">
             <br></br>
-            <h1 class="pl-6 font-bold text-3xl" id="username"> ¡HOLA USERNAME! </h1>
+            <h1 className="flex items-center w-10/12 pl-8 font-bold text-3xl" id="username"> ¡HOLA USERNAME! </h1>
             <br></br>
-            <h2 class= "pl-6 font-bold text-blue-800" id="trainerSubTittle">¿QUÉ DESEAS HACER HOY?</h2>
+            <h2 className= "flex items-center w-10/12 pl-8 font-bold text-main-blue" id="trainerSubTittle">¿QUÉ DESEAS HACER HOY?</h2>
             <br></br>
-        </div>
-            {props.options.map((input)=>{  
-                
-                return <div class="flex-col mx-auto w-full items-center justify-center bg-main-white">
-                        <Link class="font-bold dark:text-white items-center" to={input.route}>
-                            <div class="hover:bg-gray-50 flex flex-1 items-center pl-3 pb-8 pt-8">
-                                <div class="flex flex-col w-0 h-10 justify-center items-center mr-4"></div>
-                                <li class="flex flex-row h-1 justify-center items-center mr-4">
-                                    <div class ="pr-6">
-                                        {input.icon}
-                                    </div>
-                                    <div pl-10>
-                                        {input.tag}
-                                    </div>
-                                </li>
-                            </div>
-                        </Link>
-                    </div>
+        </div>*/}
+    {props.options.map((input)=>{  
+        
+            return <div className="w-full bg-main-gray">
+                    <Link classame="flex items-center" to={input.route}>
+                        <div className="flex items-center font-bold pl-8 md:pl-20 lg:pl-32 pb-8 pt-8 md:pb-10 md:pt-10 text-white hover:bg-main-blue-transparent border-b dark:border-white">
+                            <div className="flex items-center h-10"></div>
+                            <li className="flex items-center h-1 mr-4 ">
+                                <div className ="pr-8">
+                                    {input.icon}
+                                </div>
+                                <div>
+                                    {input.tag}
+                                </div>
+                            </li>
+                        </div>
+                    </Link>
+                </div>
             })}
         </>
     );
