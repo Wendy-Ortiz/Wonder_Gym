@@ -4,6 +4,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        'montserrat': 'Montserrat',
+        'bebasNeue': 'Bebas Neue',
+      },
+
       colors: {
         'main-gray': '#282828',
         'main-gold': '#E5AC2D',

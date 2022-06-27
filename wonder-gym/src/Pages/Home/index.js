@@ -6,7 +6,8 @@ export default function Home() {
     {
         id: 1,
         tag: 'Iniciar Sesión',
-        route: '/login',
+        init: 'true'
+        //route: '/login',
     },
     {
       id: 2,
@@ -16,14 +17,13 @@ export default function Home() {
 ]
 
     return (
-      <>
+      <div className='divide-y-2 divide-main-gold'>
         <div className='m-0'>
           <Header bg_gray={true} logo_src='/logo84-64.png' values={MenuValues}/>
         </div>
-        <hr className='bg-main-gold h-1'/>
         <div className={`m-0 flex h-screen bg-main-gray w-full sm:px-8 md:px-12 lg:px-24`}>
         </div>
-      </>
+      </div>
       
     );
   }
