@@ -56,10 +56,10 @@ export default function MainTrainer() {
     <>
         
         <div className='m-0'>
-          <Header bg_gray={true} logo_src='/logo84-64_v2.png' values={MenuValues}/>
+          <Header bg_gray={true} logo_src='/logo84-64.png' values={MenuValues}/>
         </div>
         <hr className='bg-main-gold h-1'/>
-        <div className={`m-0 h-screen bg-main-gray w-full sm:px-8 md:px-12 lg:px-24`}>
+        <div className={`m-0 h-screen bg-main-gray w-full`}>
             <div className='m-0'>
             <List options={options}/>
             </div>
