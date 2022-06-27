@@ -7,6 +7,7 @@ import Home from "../Home";
 import Login from "../Login";
 import Register from "../Register";
 import Trainer from "../Trainer";
+import TrainerUsers from "../Trainer/TrainerUsers";
 import User from "../User";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="mainTrainer" element={<Trainer />} />
           <Route path="user" element={<User />} />
+          <Route path="mainTrainer/trainerUsers"  element={<TrainerUsers />} />
       </Routes>
     </BrowserRouter>
   );
