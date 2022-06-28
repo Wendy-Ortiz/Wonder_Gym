@@ -18,7 +18,7 @@ export default function LoginModal(props){
         props.setIsOpenLoginModal(false);
     }
 
-    const handleSummit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         console.log(userData);
     }
@@ -45,7 +45,7 @@ export default function LoginModal(props){
                         <div className='pb-6'>
                             <input className={`border-0 border-b border-black p-2 w-52 lg:w-96`} id='password' type='password' placeholder='Contraseña' value={userData.password} onChange={handleChange}/>
                         </div>
-                        <button className="text-white font-bold bg-main-blue m-6 rounded-lg h-12 w-48 lg:w-56" onClick={handleSummit}> Ingresar </button>
+                        <button className="text-white font-bold bg-main-blue m-6 rounded-lg h-12 w-48 lg:w-56" onClick={handleSubmit}> Ingresar </button>
                     </form>
                 </div>
             </div>
