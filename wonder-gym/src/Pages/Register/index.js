@@ -1,22 +1,21 @@
 import { useState } from 'react'
-
+import { useNavigate  } from 'react-router-dom'
 import Header from '../../components/Header'
-import Button from '../../components/Button'
+import LoginModal from '../../components/LoginModal';
 
 const RegisterInput = (props) => {
   const {label, onChange, ...inputProps} = props
   return(
-    <div className='pt-4'>
-        <label> {label} </label>
-        <div className='pt-2'>
-            <input className='pl-2 pr-2 border border-gray-800 rounded-lg h-10' {...inputProps} onChange={onChange}/>
-        </div>
+    <div className='py-2 font-montserrat'>
+        <label > {label} </label>
+        <input className=' px-4 border border-gray-800 rounded-md h-9 w-full' {...inputProps} onChange={onChange}/>
     </div>
-  );
+  );  
 };
 
 export default function Register() {
-
+  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false)
+  const navigate = useNavigate ();
   const [Values, setValues] = useState({
     name: "",
     email: "",
@@ -29,28 +28,28 @@ export default function Register() {
         id: 1,
         name: "name",
         type: "text",
-        label: "Nombre  *",
+        label: "Nombre",
         required: true,
     },
     {
         id: 2,
         name: "email",
-        type: "text",
-        label: "Email: *",
+        type: "email",
+        label: "Email",
         required: true,
     },
     {
         id: 3,
         name: "password",
         type: "password",
-        label: "Contraseña: *",
+        label: "Contraseña",
         required: true,
     },
     {
       id: 4,
       name: "confirm_password",
       type: "password",
-      label: "Confirmar Contraseña: *",
+      label: "Confirmar Contraseña",
       required: true,
     },
     ];
@@ -58,13 +57,13 @@ export default function Register() {
   const MenuValues = [
     {
       id: 5,
-      tag: 'Menu Principal',
-      route: '/'
+      tag: 'Página Principal',
+      handleClick: () => navigate(`/`),
     },
     {
       id: 6,
       tag: 'Iniciar Sesión',
-      route: '/login'
+      handleClick: () => setIsOpenLoginModal(true),
     },
   ]
 
@@ -79,13 +78,13 @@ export default function Register() {
 
   return (
     <>
-      <div className='m-0'>
-        <Header bg_gray={false} logo_src='/logo84-64_v2.png' values={MenuValues}/>
-      </div>
-      <hr className='bg-main-gray h-0.5'/>
-      <div className={`ml-4 mr-4 flex flex-col h-screen bg-white sm:px-8 md:px-12 lg:px-24`}>
-        <form onSubmit={handleSubmit}>
-          <h1> Crea tu Cuenta </h1>
+      <div className='divide-y-2 divide-main-gray'>
+        <div className='m-0'>
+          <Header bg_gray={false} logo_src='/logo84-64_v2.png' values={MenuValues}/>
+        </div>
+      <div className={`m-0 flex h-screen bg-white w-full sm:px-8 md:px-12 lg:px-24`}>
+        <form className='px-8'>
+          <h1 className={`font-bebasNeue pt-16 pb-10 text-5xl lg:text-6xl`}> Crea tu Cuenta </h1>
           {Input_Values.map((input) => (
             <RegisterInput
                 key={input.id}
@@ -94,10 +93,12 @@ export default function Register() {
             />
           ))}
           <div className='m-8 flex items-center justify-center'>
-            <Button w='w-36' h='h-10' type="submit" ButtonText='Registrarme'/>
+          <button className="text-white font-bold bg-main-blue m-6 rounded-lg h-12 w-48 lg:w-56" onClick={handleSubmit}> Registrarme </button>
           </div>
         </form>
       </div>
+    </div>
+    <LoginModal isOpenLoginModal={isOpenLoginModal} setIsOpenLoginModal={setIsOpenLoginModal} />
     </>
     
   );
