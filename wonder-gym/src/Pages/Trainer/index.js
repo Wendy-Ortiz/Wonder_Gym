@@ -1,26 +1,31 @@
-import React from 'react';   
+import React from 'react';
+import { useState } from 'react'
+import { useNavigate  } from 'react-router-dom'  
+/*import { useSelector } from "react-redux";*/ 
 import Header from '../../components/Header'
 import List from '../../components/List'
 
 export default function MainTrainer() {
-    const ListItem = (props) => {
-    return <p className='m-4'><a href={props.route}> {props.tag} </a></p>;
-};
+    /*const userState = useSelector((state) => state.user);*/
+    const [setIsOpenLoginModal] = useState(false)
+    const navigate = useNavigate ();
+
+    
     const MenuValues = [
     {
         id: 1,
         tag: 'Mi perfil',
-        route: '/mainTrainer/trainerProfile'
+        handleClick: () => navigate(`/mainTrainer/profile`),
     },
     {
         id: 2,
         tag: 'Configuraciones',
-        route: '/mainTrainer/settings'
+        handleClick: () => navigate(`/mainTrainer/config`),
     },
     {
         id: 3,
         tag: 'Cerrar Sesión',
-        route: '/mainTrainer/logOut'
+        handleClick: () => setIsOpenLoginModal(false),
     },
     ]
 
@@ -63,6 +68,13 @@ export default function MainTrainer() {
           <Header bg_gray={true} logo_src='/logo84-64.png' values={MenuValues}/>
         </div>
         <hr className='bg-main-gold h-1'/>
+        <div className="bg-white w-full">
+            <br></br>
+            <h1 className="flex items-center px-8 md:px-12 lg:px-24 font-bold text-2xl md:text-3x1 lg:text-4xl" id="username"> ¡HOLA USERNAME! {/*{userState.user.name}*/} </h1>
+            <br></br>
+            <h2 className= "flex items-center px-8 md:px-12 lg:px-24 font-bold text-main-blue text-base md:text-lg lg:text-xl" id="trainerSubTittle">¿QUÉ DESEAS HACER HOY?</h2>
+            <br></br>
+        </div>
         <div className={`m-0 h-screen bg-main-gray w-full`}>
             <div className='m-0'>
             <List options={options}/>
