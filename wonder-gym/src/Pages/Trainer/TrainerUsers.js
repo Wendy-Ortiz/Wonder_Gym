@@ -4,7 +4,7 @@ import List from '../../components/List'
 import SecondHeader from '../../components/SecondHeader'
 
 export default function MainTrainer() {
-    var searchFlag = True;
+    var searchFlag = true;
 
     const MenuValues = [
     {
