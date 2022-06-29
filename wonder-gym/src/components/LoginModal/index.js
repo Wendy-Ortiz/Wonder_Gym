@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { RiCloseLine } from 'react-icons/ri';
+import { postLogin } from "../../Slices/user/requests/postLogin";
 
 export default function LoginModal(props){
     const logo = '/logo120-56_login-md.png';
@@ -7,6 +10,10 @@ export default function LoginModal(props){
         userName: '',
         password: '',
     });
+
+    const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
+    //const errorMessage = useSelector((state) => state.user.errorMessage);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.id]: e.target.value });
@@ -21,9 +28,19 @@ export default function LoginModal(props){
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(userData);
+        const username = userData.userName;
+        const password = userData.password;
+        dispatch(
+            postLogin({
+                username,
+                password,
+            })
+        );
     }
 
-    return(
+    return userIsLoggedIn ? (
+        <Navigate to="/" /> 
+      ) : (
         props.isOpenLoginModal && (
         <div className={`fixed bg-main-gray-95-transp overflow-y-auto overflow-x-hidden top-0 left-0 w-full h-full justify-center items-center flex`} >
             <div id='LoginModalContainer' className= {`relative p-4 w-full max-w-2xl`}>
