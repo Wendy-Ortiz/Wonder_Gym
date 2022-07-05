@@ -32,6 +32,7 @@ export const onPostLoginFullfiled = (state, action) => {
     } else {
         state.userIsLoggedIn = true;
         state.user = action.payload;
+        console.log('Loggeado');
     }
 };
 

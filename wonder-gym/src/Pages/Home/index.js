@@ -27,7 +27,7 @@ export default function Home() {
     return (
       <>
         { userIsLoggedIn ? (
-          console.log('redirect')
+          console.log('From Home: TODO: redirect to page')
         ) : (
         <>
           <div className='divide-y-2 divide-main-gold'>
