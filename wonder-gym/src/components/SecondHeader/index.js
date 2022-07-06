@@ -19,7 +19,8 @@ export default function SecoundHeader(props){
                         </div>
                     </div>
                     {(() => {
-                        if (input.searchFlag){
+                        /*If or state?*/
+                        if (input.searchFlag) {  
                             return (
                                 <>
                                     <br></br>

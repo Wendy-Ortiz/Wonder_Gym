@@ -1,11 +1,11 @@
 import React from 'react';   
-import { useState, useEffect } from 'react'
+import { /*useState,*/ useEffect } from 'react'
 import Header from '../../components/Header'
 import List from '../../components/List'
 
 export default function MainTrainer() {
 
-    const [user, setUsers] = useState(null); /**For obtain the username for second header */
+    //const [user, setUsers] = useState(null); /**For obtain the username for second header */
     
     useEffect(()=> {
         const fetchUsers = async () => {
