@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Wonder Gym",
+  "name": "Wonder Gym Website",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,34 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo84-64.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "84x64"
     },
     {
-      "src": "logo512.png",
+      "src": "logo84-64_v2.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "84x64"
+    },
+    {
+      "src": "logo84-40_login-sm.png",
+      "type": "image/png",
+      "sizes": "84x40"
+    },
+    {
+      "src": "logo120-56_login-md.png",
+      "type": "image/png",
+      "sizes": "120x56"
+    },
+    {
+      "src": "logo150-76_login-lg.png",
+      "type": "image/png",
+      "sizes": "150x76"
+    },
+    {
+      "src": "Home_header_decorator.png",
+      "type": "image/png",
+      "sizes": "5x34"
     }
   ],
   "start_url": ".",

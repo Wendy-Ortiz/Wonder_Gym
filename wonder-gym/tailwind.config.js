@@ -3,7 +3,20 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'montserrat': 'Montserrat',
+        'bebasNeue': 'Bebas Neue',
+      },
+
+      colors: {
+        'main-gray': '#282828',
+        'main-gray-95-transp': '#282828F2',
+        'main-gold': '#E5AC2D',
+        'main-blue': '#2E6FE6',
+        'secundary-blue' : '#2E6FE6',
+      },
+    },
   },
   plugins: [],
 }
