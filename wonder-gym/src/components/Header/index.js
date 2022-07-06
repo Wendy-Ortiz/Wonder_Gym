@@ -59,7 +59,6 @@ export default function Headers(props){
     const icon_color =  props.bg_gray ? 'white': 'black';
 
     const [showUserMenu, setShowUserMenu] = useState(false);
-
     return (
     width <= 1024 ?
     <div className={`flex h-24 ${background} w-full px-8 md:px-12 lg:px-24`}>

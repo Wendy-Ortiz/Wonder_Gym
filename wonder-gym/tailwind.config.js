@@ -14,6 +14,7 @@ module.exports = {
         'main-gray-95-transp': '#282828F2',
         'main-gold': '#E5AC2D',
         'main-blue': '#2E6FE6',
+        'main-blue-transparent': '#2E6FE680',
         'secundary-blue' : '#2E6FE6',
       },
     },
