@@ -2,12 +2,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import '../../App.css';
 
+import PrivateRoute from "../../components/PrivateRoute";
 import Home from "../Home";
 import Register from "../Register";
 import Trainer from "../Trainer";
 import TrainerUsers from "../Trainer/TrainerUsers";
 import SelectExercises from "../Trainer/Exercises";
 import User from "../User";
+import Error from "../Error"
+
+import { ROLES } from "../../utils/constants";
 
 function App() {
   return (
@@ -15,11 +19,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
-          <Route path="mainTrainer" element={<Trainer />} />
-          <Route path="user" element={<User />} />
-          <Route path="mainTrainer/trainerUsers"  element={<TrainerUsers />} />
-          <Route path="mainTrainer/trainerUsers/alejandroElviraRamirez/"  element={<SelectExercises/>} />
-      </Routes>
+          <Route element={<PrivateRoute allowedRoles={[ROLES.TRAINER]} />}>
+            <Route path="mainTrainer" element={<Trainer />} />
+            <Route path="mainTrainer/trainerUsers"  element={<TrainerUsers />} />
+            <Route path="mainTrainer/trainerUsers/alejandroElviraRamirez/"  element={<SelectExercises/>} />
+          </Route>
+          <Route element={<PrivateRoute allowedRoles={[ROLES.CLIENT]} />}>
+            <Route path="user" element={<User />} />
+          </Route>
+      
+          <Route path="/no-autorizado" element={<Error  errorCode="401" errorName="No Autorizado"/>} />
+          <Route path="*" element={<Error errorCode="404" errorName="Not Found" />}/>
+        </Routes>
     </BrowserRouter>
   );
 }
