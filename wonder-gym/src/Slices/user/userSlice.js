@@ -2,20 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 import { onPostLoginFullfiled, onPostLoginRejected, postLogin } from "./requests/postLogin";
 
 const userSlice = createSlice({
-    name: 'app',
+    name: 'user',
     initialState:{
-        user: null,
+        token: null,
         userIsLoggedIn: false,
         errorMessage: "",
     },
     reducers:{
         login: (state, action) =>{
             state.userIsLoggedIn = true;
-            state.user = action.payload.user;
+            state.token = action.payload.token;
         },
         logout: (state) => {
             state.userIsLoggedIn = false;
-            state.user = null;
+            state.token = null;
+            window.localStorage.removeItem('token');
         }
     },
     extraReducers(builder) {
