@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { useNavigate  } from 'react-router-dom'
+import { Navigate, useNavigate  } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import jwtDecode from "jwt-decode";
 import Header from '../../components/Header'
 import LoginModal from '../../components/LoginModal';
+
+import { ROLES } from "../../utils/constants";
 
 export default function Home() {
     const navigate = useNavigate ();
@@ -24,10 +27,16 @@ export default function Home() {
       },
     ]
 
+    const redirectToRolHomePage = () => {
+      const token = localStorage.getItem('token');
+      const decryptedToken = jwtDecode(token);
+      return (decryptedToken.roles).find(element => element === ROLES.TRAINER) ?  <Navigate to="/mainTrainer"/> : <Navigate to="/user"/> ;
+    }
+    
     return (
       <>
         { userIsLoggedIn ? (
-          console.log('From Home: TODO: redirect to page')
+          redirectToRolHomePage()
         ) : (
         <>
           <div className='divide-y-2 divide-main-gold'>

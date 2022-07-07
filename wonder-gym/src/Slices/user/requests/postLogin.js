@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentials) => {
-    console.log('postLogin')
     const loginFetch = await fetch('http://localhost:3001/users/login', {
         method: 'POST',
         headers: {
@@ -13,13 +12,13 @@ export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentia
         }),
     });
 
-    const userData = await loginFetch.json();
+    const userToken = await loginFetch.json();
     if (loginFetch.status === 200) {
-        return userData;
+        return userToken;
     } else {
         return {
             error: true,
-            message: userData.error.message,
+            message: userToken.error.message,
         }
     }
 });
@@ -27,16 +26,20 @@ export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentia
 export const onPostLoginFullfiled = (state, action) => {
     if (action.payload.error) {
         state.userIsLoggedIn = false;
-        state.user = null;
+        state.token = null;
         state.errorMessage = action.payload.message;
     } else {
         state.userIsLoggedIn = true;
-        state.user = action.payload;
-        console.log('Loggeado');
+        state.token = action.payload["token"];
+        try{
+            window.localStorage.setItem('token', action.payload["token"]);
+        } catch(error){
+            console.log(error);
+        }
     }
 };
 
 export const onPostLoginRejected = (state) => {
     state.userIsLoggedIn = false;
-    state.user = null;
+    state.token = null;
 }
