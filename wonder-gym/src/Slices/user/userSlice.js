@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { onPostLoginFullfiled, onPostLoginRejected, postLogin } from "./requests/postLogin";
+import { onCreateUserFullfiled, onCreateUserRejected, createUser } from "./requests/createUsers";
 
 const userSlice = createSlice({
     name: 'user',
     initialState:{
         token: null,
         userIsLoggedIn: false,
+        userSuccessfullyRegistered: false,
         errorMessage: "",
     },
     reducers:{
@@ -23,6 +25,8 @@ const userSlice = createSlice({
         builder
             .addCase(postLogin.fulfilled, onPostLoginFullfiled)
             .addCase(postLogin.rejected, onPostLoginRejected)
+            .addCase(createUser.fulfilled, onCreateUserFullfiled)
+            .addCase(createUser.rejected, onCreateUserRejected)
     },
     });
 
