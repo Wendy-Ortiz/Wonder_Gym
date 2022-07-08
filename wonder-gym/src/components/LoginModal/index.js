@@ -14,7 +14,7 @@ export default function LoginModal(props){
     });
 
     const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
-    //const errorMessage = useSelector((state) => state.user.errorMessage);
+    const errorMessage = useSelector((state) => state.user.errorMessage);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -92,6 +92,7 @@ export default function LoginModal(props){
                             <input className={`border-0 border-b border-black p-2 w-52 lg:w-96`} id='password' type='password' placeholder='Contraseña' value={userData.password} onChange={handleChange}/>
                         </div>
                         { !validPassword && <p className={`text-red-500 text-sm pb-2`}> Contraseña debe ser alfanúmerica y contener mínimo 8 dígitos. </p> }
+                        { (errorMessage !== "") && <p className={`text-red-500 text-sm pb-2 px-4`}> Ups! Algo salió mal. Por favor vuelva a intentarlo. </p> }
                         <button className="text-white font-bold bg-main-blue m-6 rounded-lg h-12 w-48 lg:w-56" onClick={handleSubmit}> Ingresar </button>
                     </form>
                 </div>

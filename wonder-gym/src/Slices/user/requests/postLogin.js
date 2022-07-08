@@ -31,6 +31,7 @@ export const onPostLoginFullfiled = (state, action) => {
     } else {
         state.userIsLoggedIn = true;
         state.token = action.payload["token"];
+        state.errorMessage = "";
         try{
             window.localStorage.setItem('token', action.payload["token"]);
         } catch(error){
@@ -40,6 +41,7 @@ export const onPostLoginFullfiled = (state, action) => {
 };
 
 export const onPostLoginRejected = (state) => {
+    state.errorMessage = "Rejected";
     state.userIsLoggedIn = false;
     state.token = null;
 }
