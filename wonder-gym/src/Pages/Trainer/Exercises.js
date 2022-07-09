@@ -1,7 +1,7 @@
 import React from 'react';   
 import Header from '../../components/Header'
 import SecondHeader from '../../components/SecondHeader'
-import Accordion from '../../components/Accordion'
+import AccordionList from '../../components/AccordionList'
 
 export default function SelectExercises() {
     var searchFlag = true;
@@ -24,46 +24,51 @@ export default function SelectExercises() {
     },
     ]
 
-    const options = [
-    {
-        id: 1,
-        tittle: 'Abdominales',
-        option: 'Plancha lateral',
-        route: '/',
-    },
-    {
-        id: 2,
-        tittle: 'Pecho',
-        option: 'Banca plana',
-        route: '/',
-    },
-    {
-        id: 3,
-        tittle: 'Brazo',
-        option: 'Bicep',
-        route: '/',
-    },
-    ]
     const headerMenu = [
         
         {
-            tittle: 'Asignar a',
+            title: 'Asignar a',
             subTittle:'',
             searchFlag
-        }
+        },
+    ]
+    const options = [
+        {
+            id: 1,
+            exercises: {
+                title: "Sendillas",
+                option: "zumo",
+                button: ""
+            },
+        },
+        {
+            id: 2,
+            exercises: {
+                title: "Abominales",
+                option: "Plancha plana",
+                button: ""
+            },
+        },
+        {
+            id: 3,
+            exercises: {
+                title: "Tricep",
+                option: "Fondos",
+                button: ""
+            },
+        },
     ]
 
     return (
-    <>
-        
+    <>  
         <div className='m-0'>
           <Header bg_gray={true} logo_src='/logo84-64.png' values={MenuValues}/>
         </div>
         <hr className='bg-main-gold h-1'/>
         <div className={`m-0 h-screen bg-main-gray w-full`}>
             <div className='m-0'>
-            <SecondHeader options={headerMenu}/>
-            <Accordion options={options}/>
+                <SecondHeader options={headerMenu}/>
+                <AccordionList options={options}/>
             </div>
         </div>
     </>
