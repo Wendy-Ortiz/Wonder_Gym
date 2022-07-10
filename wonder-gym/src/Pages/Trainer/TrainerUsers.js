@@ -74,7 +74,7 @@ const MenuValues = [{
                 <div className={`m-0 h-screen bg-main-gray w-full`}>
                     <div className='m-0'>
                     <SecondHeader options={headerMenu}/> 
-                    <List options={options}/>  {/*how can I get this?*/}
+                    <List options={options}/> 
                     </div>
                 </div>
             </>
