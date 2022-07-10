@@ -5,7 +5,7 @@ import AccordionList from '../../components/AccordionList'
 
 export default function SelectExercises() {
     var searchFlag = true;
-
+ 
     const MenuValues = [
     {
         id: 1,
@@ -37,7 +37,10 @@ export default function SelectExercises() {
             id: 1,
             exercises: {
                 title: "Sendillas",
-                option: "zumo",
+                option: [                    
+                    "Plancha plana",
+                    "Plancha plana",
+                ],
                 button: ""
             },
         },
@@ -45,7 +48,10 @@ export default function SelectExercises() {
             id: 2,
             exercises: {
                 title: "Abominales",
-                option: "Plancha plana",
+                option: [                    
+                    "Plancha plana",
+                    "Plancha plana",
+                ],
                 button: ""
             },
         },
@@ -53,12 +59,14 @@ export default function SelectExercises() {
             id: 3,
             exercises: {
                 title: "Tricep",
-                option: "Fondos",
+                option: [                    
+                    "Plancha plana",
+                    "Plancha plana",
+                ],
                 button: ""
             },
         },
     ]
-
     return (
     <>  
         <div className='m-0'>
