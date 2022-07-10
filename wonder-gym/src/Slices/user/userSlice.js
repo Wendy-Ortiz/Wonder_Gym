@@ -5,18 +5,20 @@ import { onCreateUserFullfiled, onCreateUserRejected, createUser } from "./reque
 const userSlice = createSlice({
     name: 'user',
     initialState:{
+        userId: null,
+        userName: null,
+        userEmail: null,
         token: null,
         userIsLoggedIn: false,
         userSuccessfullyRegistered: false,
         errorMessage: "",
     },
     reducers:{
-        login: (state, action) =>{
-            state.userIsLoggedIn = true;
-            state.token = action.payload.token;
-        },
         logout: (state) => {
             state.userIsLoggedIn = false;
+            state.userId = null;
+            state.userName = null;
+            state.userEmail = null;
             state.token = null;
             window.localStorage.removeItem('token');
         }
