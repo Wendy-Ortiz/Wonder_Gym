@@ -23,8 +23,8 @@ function App() {
           <Route element={<PrivateRoute allowedRoles={[ROLES.TRAINER]} />}>
             <Route path="mainTrainer" element={<TrainerMainPage />} />
             <Route path="mainTrainer/trainerUsers"  element={<TrainerUsers />} />
-            <Route path="mainTrainer/trainerUsers/:name"  element={<UserRoutine/>} />
-            <Route path="mainTrainer/trainerUsers/:name/assignExercise"  element={<SelectExercises/>} />
+            <Route path="mainTrainer/trainerUsers/:userId"  element={<UserRoutine/>} />
+            <Route path="mainTrainer/trainerUsers/:userId/assignExercise"  element={<SelectExercises/>} />
           </Route>
           <Route element={<PrivateRoute allowedRoles={[ROLES.CLIENT]} />}>
             <Route path="user" element={<User />} />

@@ -1,31 +1,29 @@
 import {React, useState, useEffect } from 'react'; 
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate  } from 'react-router-dom' 
+import { useNavigate, useParams } from 'react-router-dom' 
 import Header from '../../components/Header'
-import List from '../../components/List'
+import AccordionList from '../../components/AccordionList';
 import SecondHeader from '../../components/SecondHeader'
 import FixButton from '../../components/FixButton'
 import { logout } from "../../Slices/user/userSlice";
 
 export default function SelectExercises() {
+    var {userId} = useParams();
+    userId = parseInt(userId);
     var searchFlag = false;
     const dispatch = useDispatch();
     const navigate = useNavigate ();
     const name = useSelector(
-        (state) => state.user.name
-    );
-    const id = useSelector(
-        (state) => state.user.id
+        (state) => state.user.userName
     );
 
     const [options,setOptions] = useState(null);
+    const [routines,setRoutines] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(()=> {
-        const fetchUsers = async () => {
-
+        const fetchUserData= async () => {
             const token = localStorage.getItem('token');
-
             try {
                 const usersFetch = await fetch('http://localhost:3001/users/user', {
                     method: 'POST',
@@ -34,22 +32,38 @@ export default function SelectExercises() {
                         "authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
-                    id: {id}
+                        id: userId
                     }),
                 });
                 const usersJSON = await usersFetch.json();
-                console.log('Lo logro ', usersJSON);
                 setOptions(usersJSON);
-                setLoading(false);
             } catch (error){
-                console.log('Ay fallo :c')
                 console.error(error);
             }
 
+            try {
+                const routinesFetch = await fetch('http://localhost:3001/routines', {
+                    method: 'POST',
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        id: userId
+                    }),
+                });
+                const routinesJSON = await routinesFetch.json();
+                setRoutines(routinesJSON);
+            } catch (error){
+                console.error(error);
+            }
+
+            setLoading(false);
         }
-        fetchUsers();
-            
-        });
+
+        fetchUserData();
+
+        }, [userId]);
+
 
     const MenuValues = [
         {
@@ -72,6 +86,7 @@ export default function SelectExercises() {
     const headerMenu = [
         
         {
+            id: 1,
             title:  name,
             subTittle:'',
             searchFlag
@@ -98,17 +113,17 @@ export default function SelectExercises() {
                             <div className="flex pl-16 pt-4 columns-2">
                                 <div className="flex items-center">
                                     <img src = "/icons/weight_Kg.svg" alt="News Icon"/>
-                                    <p className="items-center text-white font-extralight text-base px-4"> {/*contraindications[0]*/}80.56 kg</p>
+                                    <p className="items-center text-white font-extralight text-base px-4"> {options[0].weight} kg </p>
 
                                 </div>
                                 <div className="flex items-center p-2">
                                     <img src = "/icons/height.svg" alt="News Icon"/>,
-                                    <p className="items-center text-white font-extralight text-base px-2"> {/*contraindications[0]*/} 1.56kg</p>
+                                    <p className="items-center text-white font-extralight text-base px-2"> {options[0].height} cm </p>
                                 </div>
                             </div>
                             <p className="items-center text-white font-bold text-lg pl-16 pt-4">Contraindicaciones:</p>
                             <div>
-                                <p className="items-center text-white font-extralight text-base pl-16"> {/*contraindications[0]*/} No tiene contraaindicaciones </p>
+                                <p className="items-center text-white font-extralight text-base pl-16"> {options[0].contraindications} </p>
                             </div>
                             <br></br>
                         </div>
@@ -118,7 +133,7 @@ export default function SelectExercises() {
                                 <h1 className="flex items-center px-8 md:px-12 lg:px-24  text-3xl md:text-4x1 lg:text-5xl" id="username">RUTINAS</h1>
                                 <img  className="flex items-center" src = "/icons/routine2_icon_blue.svg" alt="New Routine Icon"/>
                             </div>
-                            <List options={options}/> {/*<AccordionList options={options}/> */}
+                            <AccordionList options={routines}/>
                         </div>
                     </div>
                 </div>

@@ -23,11 +23,10 @@ export default function MainTrainer() {
                     headers: { "authorization": `Bearer ${token}` }
                 });
                 const usersJSON = await usersFetch.json();
-                console.log('Lo logro ', usersJSON);
+                console.log('From TrainerUsers ', usersJSON);
                 setOptions(usersJSON);
                 setLoading(false);
             } catch (error){
-                console.log('Ay fallo :c')
                 console.error(error);
             }
         }
