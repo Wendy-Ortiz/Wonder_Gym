@@ -37,7 +37,7 @@ export default function SelectExercises() {
             id: 1,
             exercises: {
                 title: "Sendillas",
-                option: [                    
+                options: [                    
                     "Plancha plana",
                     "Plancha plana",
                 ],
@@ -48,7 +48,7 @@ export default function SelectExercises() {
             id: 2,
             exercises: {
                 title: "Abominales",
-                option: [                    
+                options: [                    
                     "Plancha plana",
                     "Plancha plana",
                 ],
@@ -59,7 +59,7 @@ export default function SelectExercises() {
             id: 3,
             exercises: {
                 title: "Tricep",
-                option: [                    
+                options: [                    
                     "Plancha plana",
                     "Plancha plana",
                 ],
