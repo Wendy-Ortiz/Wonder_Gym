@@ -1,75 +1,64 @@
-import { useEffect } from 'react';   
-import { useState } from 'react';   
+import {  useState, useEffect } from 'react';
+import { useNavigate  } from 'react-router-dom'  
+import { useDispatch } from "react-redux";
 import Header from '../../components/Header'
 import List from '../../components/List'
 import SecondHeader from '../../components/SecondHeader'
+import { logout } from "../../Slices/user/userSlice";
 
 export default function MainTrainer() {
     var searchFlag = true;
     const [options,setOptions] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const navigate = useNavigate ();
+    const dispatch = useDispatch();
+
     useEffect(()=> {
         const fetchUsers = async () => {
-            //const usersFetch = await fetch (''); /*API */
-            //const usersJSON = await usersFetch.json();
-            //setOptions(usersJSON);
-            setOptions ( [
-                {
-                    id: 1,
-                    tag: 'Alejandro Elvira Ramirez',
-                    route: '/mainTrainer/trainerUsers/alejandroElviraRamirez',
-                },
-                {
-                    id: 2,
-                    tag: 'María Hidalgo',
-                    route: '/mainTrainer/trainerUsers/maríaHidalgo',
-                
-                },
-                {
-                    id: 3,
-                    tag: 'Simey Ramirez',
-                    route: '/mainTrainer/trainerUsers/simeyRamirez',
-            
-                },
-                {
-                    id: 4,
-                    tag: 'Mario Alfaro',
-                    route: '/mainTrainer/trainerUsers/marioAlfaro',
-                },
-            ]
-            );
-            setLoading(false);
+            const token = localStorage.getItem('token');
+            try{
+                const usersFetch = await fetch('http://localhost:3001/users', {
+                    method: "GET",
+                    headers: { "authorization": `Bearer ${token}` }
+                });
+                const usersJSON = await usersFetch.json();
+                console.log('Lo logro ', usersJSON);
+                setOptions(usersJSON);
+                setLoading(false);
+            } catch (error){
+                console.log('Ay fallo :c')
+                console.error(error);
+            }
         }
         fetchUsers();
 
     }, []);
 
-    const MenuValues = [
-        {
-            tag: 'Mi perfil',
-            route: '/mainTrainer/trainerProfile' /**Change route */
-        },
-        {
-            tag: 'Configuraciones',
-            route: '/mainTrainer/settings'
-        },
-        {
-            tag: 'Cerrar Sesión',
-            route: '/mainTrainer/logOut'
-        },
-    ]
+const MenuValues = [{
+        id: 1,
+        tag: 'Mi perfil',
+        handleClick: () => navigate(`/mainTrainer/profile`),
+    },
+    {
+        id: 2,
+        tag: 'Configuraciones',
+        handleClick: () => navigate(`/mainTrainer/config`),
+    },
+    {
+        id: 3,
+        tag: 'Cerrar Sesión',
+        handleClick: () => dispatch(logout()),
+    },
+]
 
-    const headerMenu = [
-        
-        {
-            tittle: 'Usuarios', 
+    const headerMenu = [{
+            id: 1,
+            title: 'Usuarios', 
             subTittle:'',
-            icon: <svg class="h-10 w-10 text-main-blue"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                </svg>,
+            icon: <img src = "/icons/users_icon.svg" alt="Users Icon"/>,
             searchFlag
-        }
+        },
     ]
 
     return (
