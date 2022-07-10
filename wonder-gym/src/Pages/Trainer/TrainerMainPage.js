@@ -1,5 +1,4 @@
 import React from 'react';
-//import { useState /*, useEffect */} from 'react'
 import { useNavigate  } from 'react-router-dom'   
 import Header from '../../components/Header'
 import List from '../../components/List'
@@ -11,39 +10,27 @@ export default function MainTrainer() {
     const token = localStorage.getItem('token');
     const decryptedToken = jwtDecode(token);
     const name = (decryptedToken.userName).split(" ");
-    //const [setIsOpenLoginModal] = useState(false);
-    
-    //const [user,setOptions] = useState(null);
     const navigate = useNavigate ();
     const dispatch = useDispatch();
 
-    /*useEffect(()=> {
-        const fetchUser = async () => {
-            const userFetch = await fetch (); /*API */
-            /*const userJSON = await userFetch.json();
-            setOptions(userJSON);
-        }
-        fetchUser();
-
-    }, []);
-    */
+  
 
     const MenuValues = [
-    {
-        id: 1,
-        tag: 'Mi perfil',
-        handleClick: () => navigate(`/mainTrainer/profile`),
-    },
-    {
-        id: 2,
-        tag: 'Configuraciones',
-        handleClick: () => navigate(`/mainTrainer/config`),
-    },
-    {
-        id: 3,
-        tag: 'Cerrar Sesión',
-        handleClick: () => dispatch(logout()),
-    },
+        {
+            id: 1,
+            tag: 'Mi perfil',
+            handleClick: () => navigate(`/mainTrainer/profile`),
+        },
+        {
+            id: 2,
+            tag: 'Configuraciones',
+            handleClick: () => navigate(`/mainTrainer/config`),
+        },
+        {
+            id: 3,
+            tag: 'Cerrar Sesión',
+            handleClick: () => dispatch(logout()),
+        },
     ]
 
     const options = [
