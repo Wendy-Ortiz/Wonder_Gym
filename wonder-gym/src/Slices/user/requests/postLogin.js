@@ -30,6 +30,10 @@ export const onPostLoginFullfiled = (state, action) => {
         state.errorMessage = action.payload.message;
     } else {
         state.userIsLoggedIn = true;
+
+        state.userId = action.payload["id"];
+        state.userName = action.payload["name"];
+        state.userEmail = action.payload["email"];
         state.token = action.payload["token"];
         state.errorMessage = "";
         try{
