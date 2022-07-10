@@ -5,8 +5,9 @@ import '../../App.css';
 import PrivateRoute from "../../components/PrivateRoute";
 import Home from "../Home";
 import Register from "../Register";
-import Trainer from "../Trainer";
+import TrainerMainPage from "../Trainer/TrainerMainPage";
 import TrainerUsers from "../Trainer/TrainerUsers";
+import UserRoutine from "../Trainer/UserRoutine";
 import SelectExercises from "../Trainer/Exercises";
 import User from "../User";
 import Error from "../Error"
@@ -20,9 +21,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route element={<PrivateRoute allowedRoles={[ROLES.TRAINER]} />}>
-            <Route path="mainTrainer" element={<Trainer />} />
+            <Route path="mainTrainer" element={<TrainerMainPage />} />
             <Route path="mainTrainer/trainerUsers"  element={<TrainerUsers />} />
-            <Route path="mainTrainer/trainerUsers/alejandroElviraRamirez/"  element={<SelectExercises/>} />
+            <Route path="mainTrainer/trainerUsers/:name"  element={<UserRoutine/>} />
+            <Route path="mainTrainer/trainerUsers/:name/assignExercise"  element={<SelectExercises/>} />
           </Route>
           <Route element={<PrivateRoute allowedRoles={[ROLES.CLIENT]} />}>
             <Route path="user" element={<User />} />
