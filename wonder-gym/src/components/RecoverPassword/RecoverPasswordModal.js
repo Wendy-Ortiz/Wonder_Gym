@@ -4,13 +4,14 @@ import { Navigate } from "react-router-dom";
 import { RiCloseLine } from 'react-icons/ri';
 import { postLogin } from "../../Slices/user/requests/postLogin";
 
-export default function LoginModal(props){
+export default function RecoverPasswordModal(props){
     const logo = '/logo120-56_login-md.png';
+    
     const [validEmail, setValidEmail] = useState(true);
-    const [validPassword, setValidPassword] = useState(true);
+    //const [validCode, setValidCode] = useState(true);
     const [userData, setUserData] = useState({
-        userName: '',
-        password: '',
+        email: '',
+        code: '',
     });
 
     const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
@@ -27,20 +28,14 @@ export default function LoginModal(props){
         );
     }
 
-    const validatePassword = (password) => {
-        return String(password).match(
-            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-          );
-    }
-
     const validateData = () => {
         const emailIsValid = validateEmail(userData.userName);
-        const passwordIsValid = validatePassword(userData.password);
+        //const passwordIsValid = validatePassword(userData.password);
 
         emailIsValid ? setValidEmail(true) : setValidEmail(false);
-        passwordIsValid ? setValidPassword(true) : setValidPassword(false);
+        //passwordIsValid ? setValidPassword(true) : setValidPassword(false);
 
-        return emailIsValid && passwordIsValid;
+        return emailIsValid;
     }
 
     const handleCloseModal = () => {
@@ -69,7 +64,6 @@ export default function LoginModal(props){
     const handleRecoverPassword = (e) => {
         e.preventDefault();
         console.log('salado xd POR MAMOOOON');
-
     }
 
     return userIsLoggedIn ? (
