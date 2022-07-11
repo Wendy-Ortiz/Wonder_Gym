@@ -9,8 +9,8 @@ export default function SecondHeader(props){
                     <br></br>
                     <div  className="flex w-full px-8 md:px-12 lg:px-24">
                         <div className="flex items-center w-10/12">
-                            <button onClick={() => navigate(-1)}>
-                                <svg className="w-10 h-10 text-black"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="15 6 9 12 15 18" /></svg>
+                            <button onClick={() => navigate(-1)} className = "pr-5">
+                                <img src = "/icons/vector.svg" alt="News Icon"/>
                             </button>
                             <h1 className="flex items-center font-bold text-3xl md:text-4x1 lg:text-5xl text-secundary-blue" id="tittle"> {input.title} </h1>
                         </div>

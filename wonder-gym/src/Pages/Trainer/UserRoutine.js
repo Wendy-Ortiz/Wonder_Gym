@@ -1,5 +1,5 @@
 import {React, useState, useEffect } from 'react'; 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom' 
 import Header from '../../components/Header'
 import AccordionList from '../../components/AccordionList';
@@ -8,14 +8,12 @@ import FixButton from '../../components/FixButton'
 import { logout } from "../../Slices/user/userSlice";
 
 export default function SelectExercises() {
+    var checkboxFlag = false;
     var {userId} = useParams();
     userId = parseInt(userId);
     var searchFlag = false;
     const dispatch = useDispatch();
     const navigate = useNavigate ();
-    const name = useSelector(
-        (state) => state.user.userName
-    );
 
     const [options,setOptions] = useState(null);
     const [routines,setRoutines] = useState(null);
@@ -37,6 +35,7 @@ export default function SelectExercises() {
                 });
                 const usersJSON = await usersFetch.json();
                 setOptions(usersJSON);
+
             } catch (error){
                 console.error(error);
             }
@@ -53,6 +52,7 @@ export default function SelectExercises() {
                 });
                 const routinesJSON = await routinesFetch.json();
                 setRoutines(routinesJSON);
+                console.log("json",routinesJSON);
             } catch (error){
                 console.error(error);
             }
@@ -87,13 +87,13 @@ export default function SelectExercises() {
         
         {
             id: 1,
-            title:  name,
+            title: routines[0].userName,
             subTittle:'',
+            icon: '',
             searchFlag
         }
     ]
 
-   
     return (
         loading ? <div className='fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]'>
             <div className='w-16 h-16 border-b-2 border-main-blue rounded-full animate-spin'></div>
@@ -133,7 +133,7 @@ export default function SelectExercises() {
                                 <h1 className="flex items-center px-8 md:px-12 lg:px-24  text-3xl md:text-4x1 lg:text-5xl" id="username">RUTINAS</h1>
                                 <img  className="flex items-center" src = "/icons/routine2_icon_blue.svg" alt="New Routine Icon"/>
                             </div>
-                            <AccordionList options={routines}/>
+                            <AccordionList options={routines} checkboxFlag={checkboxFlag}/>
                         </div>
                     </div>
                 </div>

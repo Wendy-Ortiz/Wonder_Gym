@@ -5,6 +5,8 @@ import AccordionList from '../../components/AccordionList'
 
 export default function SelectExercises() {
     var searchFlag = true;
+    var checkboxFlag = true;
+
  
     const MenuValues = [
     {
@@ -76,7 +78,7 @@ export default function SelectExercises() {
         <div className={`m-0 h-screen bg-main-gray w-full`}>
             <div className='m-0'>
                 <SecondHeader options={headerMenu}/>
-                <AccordionList options={options}/>
+                <AccordionList options={options} checkboxFlag={checkboxFlag}/>
             </div>
         </div>
     </>
