@@ -68,7 +68,6 @@ export default function LoginModal(props){
 
     const handleRecoverPassword = (e) => {
         e.preventDefault();
-        console.log('salado xd POR MAMOOOON');
 
     }
 

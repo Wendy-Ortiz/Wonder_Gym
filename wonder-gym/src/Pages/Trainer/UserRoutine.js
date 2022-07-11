@@ -15,6 +15,7 @@ export default function SelectExercises() {
     const dispatch = useDispatch();
     const navigate = useNavigate ();
 
+    const [userName, setUserName] = useState("");
     const [options,setOptions] = useState(null);
     const [routines,setRoutines] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -51,8 +52,8 @@ export default function SelectExercises() {
                     }),
                 });
                 const routinesJSON = await routinesFetch.json();
-                setRoutines(routinesJSON);
-                console.log("json",routinesJSON);
+                setUserName(routinesJSON[0].userName);
+                routinesJSON.length !== 0 ? setRoutines(routinesJSON) : setRoutines(null);
             } catch (error){
                 console.error(error);
             }
@@ -87,7 +88,7 @@ export default function SelectExercises() {
         
         {
             id: 1,
-            title: routines[0].userName,
+            title: userName,
             subTittle:'',
             icon: '',
             searchFlag
@@ -133,7 +134,7 @@ export default function SelectExercises() {
                                 <h1 className="flex items-center px-8 md:px-12 lg:px-24  text-3xl md:text-4x1 lg:text-5xl" id="username">RUTINAS</h1>
                                 <img  className="flex items-center" src = "/icons/routine2_icon_blue.svg" alt="New Routine Icon"/>
                             </div>
-                            <AccordionList options={routines} checkboxFlag={checkboxFlag}/>
+                            {routines !== null && <AccordionList options={routines} checkboxFlag={checkboxFlag}/>}
                         </div>
                     </div>
                 </div>

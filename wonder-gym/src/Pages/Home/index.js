@@ -71,7 +71,7 @@ export default function Home() {
               <p className={`pl-[8.333333%] text-main-gold text-4xl font-bebasNeue pt-8 md:pt-16 lg:pt-24`}> SERVICIOS </p>
               <div className='pl-[8.333333%] md:flex lg:flex'>
                 <div className='w-1/2 font-bold tracking-wide text-white text-xl font-montserrat'>
-                  <p className='pt-8'> GIMNACIO </p>
+                  <p className='pt-8'> GIMNASIO </p>
                   <p className='pt-8'> NATACIÓN </p>
                   <p className='pt-8'> SPINNING </p>
                 </div>

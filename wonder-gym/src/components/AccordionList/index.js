@@ -1,7 +1,6 @@
 import AccordionComponent from '../../components/Accordion'
 
 export default function AccordionList(props){
-    console.log('Accordion List ',props);
     return (
         <>
         {props && (props.options).map((input)=>{
