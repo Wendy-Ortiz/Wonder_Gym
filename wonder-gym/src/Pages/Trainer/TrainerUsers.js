@@ -18,7 +18,7 @@ export default function MainTrainer() {
         const fetchUsers = async () => {
             const token = localStorage.getItem('token');
             try{
-                const usersFetch = await fetch('http://localhost:3001/users', {
+                const usersFetch = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
                     method: "GET",
                     headers: { "authorization": `Bearer ${token}` }
                 });

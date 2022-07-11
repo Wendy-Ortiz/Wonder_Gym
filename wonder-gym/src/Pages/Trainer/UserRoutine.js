@@ -24,7 +24,7 @@ export default function SelectExercises() {
         const fetchUserData= async () => {
             const token = localStorage.getItem('token');
             try {
-                const usersFetch = await fetch('http://localhost:3001/users/user', {
+                const usersFetch = await fetch(`${process.env.REACT_APP_API_URL}/users/user`, {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json",
@@ -42,7 +42,7 @@ export default function SelectExercises() {
             }
 
             try {
-                const routinesFetch = await fetch('http://localhost:3001/routines', {
+                const routinesFetch = await fetch(`${process.env.REACT_APP_API_URL}/routines`, {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json",
